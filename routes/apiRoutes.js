@@ -5,7 +5,7 @@ module.exports = function(app) {
     console.log("apiRoutes loaded")
 
 
-    axios.get("/api/books", (err, res) => {
+    app.get("/api/books", (err, res) => {
         
         if(err) { err => console.log(err) }
 
@@ -15,16 +15,18 @@ module.exports = function(app) {
 
 
     
-    axios.post("/api/books", (req, res) => {
+    app.post("/api/books", (req, res) => {
 
         console.log(`postBooks: ${req.body}`)
+        
+        axios.get("https://www.googleapis.com/books/v1/volumes?q=quilting")
     })
 
 
 
-    axios.delete("/api/books/:id", (req, res) => {
+    // app.delete("/api/books/:id", (req, res) => {
 
-        console.log(`deleteBook: ${req.params.id} `)
-    })
+    //     console.log(`deleteBook: ${req.params.id} `)
+    // })
     
 }

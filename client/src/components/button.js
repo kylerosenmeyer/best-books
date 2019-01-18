@@ -6,7 +6,7 @@ class Button extends Component {
         
         return (
             
-            <button className={this.props.className} data-href={this.props.href} data-saved={this.props.saved}>This is a Button</button>
+            <button className={this.props.className} data-href={this.props.href} data-saved={this.props.saved}>{this.props.name}</button>
         )
     }
 }

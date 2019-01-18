@@ -18,21 +18,22 @@ class ReactComponent extends Component {
                 <Row className="cardHeader">
                     <Column className="col-12">
                         <Title className="cardTitle" title={this.props.title} />
-                        <SubTitle className="cardSubtitle" subTitle={this.props.subTitle} />
+                        <SubTitle className="cardSubTitle" subTitle={this.props.subTitle} />
                         <Text className="cardAuthor" text={this.props.author} />
                     </Column>
                 </Row>
 
                 <Row className="cardBody">
-                    <Column className="col-sm-4">
-                        <Image className="cardImg" image={this.props.image}/>
+                    <Column className="col-md-4">
+                        <Image className="cardImg" image={this.props.image} alt={this.props.alt}/>
                     </Column>
-                    <Column className="col-sm-8">
+                    <Column className="col-md-8">
                         <Text className="cardDescription" text={this.props.story} />
                         <Button className="save" 
                                 href={this.props.source}
-                                saved={this.props.saved} />
-                        <Button className="remove"/>
+                                saved={this.props.saved}
+                                name={["Save ", <i class="far fa-bookmark"></i>]} />
+                        <Button className="readMore" name={["Read  ", <i className="fas fa-book-open"></i>]}/>
                     </Column>
                 </Row>
             </div>
