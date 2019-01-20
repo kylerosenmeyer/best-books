@@ -3,7 +3,7 @@ const
     PORT = process.env.PORT || 3001,
     app = express(),
     apiRoutes = require("./routes/apiRoutes"),
-    htmlRoutes = require("./routes/htmlRoutes")
+    mongoose = require("mongoose")
 
 
 app.use(express.urlencoded({ extended: true }))
@@ -14,8 +14,10 @@ if (process.env.NODE_ENV === "production") {
 }
 
 apiRoutes(app)
-htmlRoutes(app)
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/bestBooks")
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`)
 })
+

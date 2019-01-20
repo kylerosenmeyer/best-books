@@ -1,25 +1,61 @@
-const axios = require("axios")
+const 
+    axios = require("axios"),
+    librarian = require("../controllers/librarian")
 
 
 module.exports = function(app) {
     console.log("apiRoutes loaded")
 
 
-    app.get("/api/books", (err, res) => {
+    app.get("/api/books/:query", (req, res) => {
         
-        if(err) { err => console.log(err) }
+        let query = req.params.query
 
-        console.log(`getBooks: ${res}`)
+        let url = "https://www.googleapis.com/books/v1/volumes?q=" + query
+        
+        axios.get(url)
+             .then( function(response) { res.json(response.data.items) } )
     })
-    
-
 
     
-    app.post("/api/books", (req, res) => {
+    app.post("/api/savebook", (req, res) => {
 
-        console.log(`postBooks: ${req.body}`)
+        let book = req.body
+        console.log("----------------------------------------------")
+        console.log(`check the req title: ${book.title}`)
+        console.log(`check the req authors: ${book.authors}`)
+        console.log(`check the req image: ${book.image}`)
+        console.log(`check the req link: ${book.href}`)
+        console.log(`check the req story: ${book.story}`)
+        console.log(`check the req category: ${book.category}`)
+        console.log(`check the req pagecount: ${book.pagecount}`)
+        console.log("----------------------------------------------")
+        librarian.create(book)
         
-        axios.get("https://www.googleapis.com/books/v1/volumes?q=quilting")
+    })
+
+    app.get("/api/library", (req, res) => {
+
+        let cb = function(response) { res.json(response) }
+        librarian.findAll(cb)
+    })
+
+    app.get("/api/updateCollection", (req, res) => {
+
+        let cb = function(response) { res.json(response) }
+        librarian.count(cb)
+    })
+
+    app.delete("/api/removebook/:id", (req, res) => {
+
+        let book = req.params.id,
+            cb = function(response) { res.send(response) }
+
+        console.log("----------------------------------------------")
+        console.log(`check the delete ID request: ${book}`)
+        console.log("----------------------------------------------")
+
+        librarian.delete(book, cb)
     })
 
 

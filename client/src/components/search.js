@@ -7,6 +7,7 @@ import Button from "../components/button"
 import Input from "../components/input"
 
 class ReactComponent extends Component {
+
     
     render(){
         
@@ -15,8 +16,8 @@ class ReactComponent extends Component {
                 <Row className="searchRow">
                     <Column className="col-12">
                         <SubTitle className="searchTitle" subTitle="Search the Library"/>
-                        <Input className="searchInput" />
-                        <Button className="searchSubmit" name="Find Books"/>
+                        <Input id="searchInput" update={this.props.update}/>
+                        <Button className="searchSubmit" name="Find Books" function={this.props.search} />
                     </Column>
                 </Row>
             </Container>

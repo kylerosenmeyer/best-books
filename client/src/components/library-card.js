@@ -8,7 +8,7 @@ import Button from "./button"
 import Row from "./row"
 import Column from "./column"
 
-class Card extends Component {
+class LibraryCard extends Component {
     
     render(){
         
@@ -49,12 +49,12 @@ class Card extends Component {
                               text={this.props.story} 
                               id={this.props.id} 
                         />
-                        
+
                         <Text className="cardCategoryTitle" 
                               text="Categories: " 
                               id={this.props.id}
                         />
-
+                        
                         {this.props.categories.map((category) => (
                             <Text className="cardCategory" 
                                   text={category}  
@@ -66,10 +66,10 @@ class Card extends Component {
                               id={this.props.id}
                         />
 
-                        <Button className="save" 
+                        <Button className="remove"
                                 id={this.props.id}
-                                function={this.props.savethisbook}
-                                name={["Save ", <i className="far fa-bookmark"></i>]} 
+                                function={this.props.removethisbook}
+                                name={["Remove ", <i className="fa fa-trash"></i>]} 
                         />
 
                         <Button className="readMore" 
@@ -85,4 +85,4 @@ class Card extends Component {
     }
 }
 
-export default Card
+export default LibraryCard

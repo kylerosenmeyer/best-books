@@ -3,7 +3,12 @@ import React from "react"
 function Text(props) {
 
     return (
-        <p className={props.className}>{props.text}</p>
+        <p className={props.className} 
+           data-id={props.id}>
+        
+        {props.text}
+        
+        </p>
     )
 }
 

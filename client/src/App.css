@@ -29,10 +29,38 @@ footer {
   margin-bottom: 50px;
 }
 
+.personalWrapper {
+  width: 100%;
+  min-height: 100px;
+  padding: 20px;
+  border: 3px solid rgb(20, 20, 20);
+  box-shadow: 5px 5px 5px 5px rgba(20, 20, 20, 0.4);
+  margin-bottom: 20px;
+}
+
+.personalTitle {
+  width: 80%;
+  height: calc(1em + 30px);
+  outline: none;
+  padding-left: 20px;
+  display: block;
+  float: left;
+}
+
+.openPersonalLibrary {
+  width: 10%;
+  margin: 0% 5%;
+  font-size: 1em;
+  display: block;
+  float: right;
+}
+
 .searchWrapper {
   width: 100%;
   min-height: 100px;
   padding: 20px;
+  border: 3px solid rgb(20, 20, 20);
+  box-shadow: 5px 5px 5px 5px rgba(20, 20, 20, 0.4);
 }
 
 .searchTitle {
@@ -75,4 +103,9 @@ footer {
   width: 80%;
   height: auto;
   margin: 5% 10%;
+}
+
+.cardAuthor {
+  display: inline-block;
+  padding: 10px 20px;
 }
