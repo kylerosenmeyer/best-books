@@ -11,8 +11,8 @@ module.exports = function(app) {
         
         let query = req.params.query
 
-        let url = "https://www.googleapis.com/books/v1/volumes?q=" + query
-        
+        let url = "https://www.googleapis.com/books/v1/volumes?q=" + query + "&maxResults=20"
+        console.log(`url ${url}`)
         axios.get(url)
              .then( function(response) { res.json(response.data.items) } )
     })
@@ -30,7 +30,9 @@ module.exports = function(app) {
         console.log(`check the req category: ${book.category}`)
         console.log(`check the req pagecount: ${book.pagecount}`)
         console.log("----------------------------------------------")
-        librarian.create(book)
+
+        let cb = function(response) { res.json(response) }
+        librarian.create(book, cb)
         
     })
 

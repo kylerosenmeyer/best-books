@@ -7,6 +7,7 @@ import Row from "../components/row"
 import Column from "../components/column"
 import Footer from "../components/footer"
 import Jumbotron from "../components/jumbotron"
+import Button from "../components/button"
 import API from "../utility/api"
 
 class Book extends Component {
@@ -67,11 +68,15 @@ class Book extends Component {
           <Link to={"/"}>
             <Jumbotron title="Library App" subTitle="The best library app ever." />
           </Link>
+
+          <Link to={"/"}>
+            <Button className="return" name="Back to Search"/>
+          </Link>
   
           <Row className="cardSection">
             <Column className="col-12">
 
-              {this.collection.books.map((book)=> (
+              {this.collection.books.map((book, key)=> (
                 <LibraryCard title={book.title} 
                       authors={book.authors}
                       image={book.image}
@@ -80,8 +85,7 @@ class Book extends Component {
                       story={book.story}
                       pageCount={book.pages}
                       categories={book.categories}
-                      key={book._id} 
-                      id={book._id}
+                      key={key} 
                       onChange={ () => { this.loadBooks() } }
                       readthisbook={ () => { this.readBook(book.link) } }
                       removethisbook={() => { this.removeBook(book._id) } }

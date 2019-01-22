@@ -16,7 +16,7 @@ class ReactComponent extends Component {
                 <Row className="searchRow">
                     <Column className="col-12">
                         <SubTitle className="searchTitle" subTitle="Search the Library"/>
-                        <Input id="searchInput" update={this.props.update}/>
+                        <Input id="searchInput" update={this.props.update} value={this.props.value}/>
                         <Button className="searchSubmit" name="Find Books" function={this.props.search} />
                     </Column>
                 </Row>

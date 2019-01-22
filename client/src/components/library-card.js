@@ -20,7 +20,6 @@ class LibraryCard extends Component {
 
                         <Title className="cardTitle" 
                                title={this.props.title} 
-                               id={this.props.id}
                         />
                         
                         {this.props.authors.map((author) => (
@@ -39,7 +38,6 @@ class LibraryCard extends Component {
                         <Image className="cardImg" 
                                image={this.props.image} 
                                alt={this.props.alt} 
-                               id={this.props.id}
                         />
 
                     </Column>
@@ -47,12 +45,10 @@ class LibraryCard extends Component {
 
                         <Text className="cardDescription" 
                               text={this.props.story} 
-                              id={this.props.id} 
                         />
 
                         <Text className="cardCategoryTitle" 
                               text="Categories: " 
-                              id={this.props.id}
                         />
                         
                         {this.props.categories.map((category) => (
@@ -63,22 +59,20 @@ class LibraryCard extends Component {
 
                         <Text className="cardPages" 
                               text={`Page Count: ${this.props.pageCount}.`}
-                              id={this.props.id}
-                        />
-
-                        <Button className="remove"
-                                id={this.props.id}
-                                function={this.props.removethisbook}
-                                name={["Remove ", <i className="fa fa-trash"></i>]} 
-                        />
-
-                        <Button className="readMore" 
-                                id={this.props.id}
-                                function={this.props.readthisbook}
-                                name={["Open in Google Books  ", <i className="fas fa-book-open"></i>]}
                         />
 
                     </Column>
+                </Row>
+                <Row className="cardBotton justify-content-end">
+                    <Button className="remove align-self-end" 
+                            function={this.props.removethisbook}
+                            name={["Remove ", <i className="fa fa-trash"></i>]} 
+                    />
+
+                    <Button className="readMore align-self-end" 
+                            function={this.props.readthisbook}
+                            name={["Open in Google Books  ", <i className="fas fa-book-open"></i>]}
+                    />
                 </Row>
             </div>
         )

@@ -1,17 +1,27 @@
 html, body {
   font-family: 'Oxygen', sans-serif;
+  background-image: url("./always_grey.png")
 }
 
 button {
-  padding: 10px;
+  padding: 10px 20px;
   margin: 10px 10px 0px;
   display: block;
   float: right;
-  background: transparent;
-  border: 2px outset rgb(20, 20, 20);
+  background-color: rgb(50, 50, 50);
+  border: 2px outset rgb(50, 50, 50);
+  color: rgb(250,250,250);
+  transition: background-color 0.5s, color 0.5s, border 0.5s;
 }
 
-button:active, button:focus {
+button:focus {
+  outline: none;
+}
+
+button:hover, button:active {
+  background-color: rgb(113, 170, 82);
+  color: rgb(250,250,250);
+  border: 2px outset rgb(113, 170, 82);
   outline: none;
 }
 
@@ -21,8 +31,22 @@ footer {
   text-align: center;
 }
 
+input {
+  border: 2px outset rgb(50, 50, 50);
+}
+
+a:hover, a:active {
+  text-decoration: none;
+}
+
+.jumbotron {
+  background-color: transparent;
+  color: rgb(250,250,250);
+}
+
 .footerText {
   padding: 25px;
+  color: rgb(250,250,250);
 }
 
 .appWrapper {
@@ -36,19 +60,21 @@ footer {
   border: 3px solid rgb(20, 20, 20);
   box-shadow: 5px 5px 5px 5px rgba(20, 20, 20, 0.4);
   margin-bottom: 20px;
+  background-color: rgb(221, 221, 221);
 }
 
 .personalTitle {
-  width: 80%;
+  width: 70%;
   height: calc(1em + 30px);
   outline: none;
   padding-left: 20px;
   display: block;
   float: left;
+  word-wrap: break-word;
 }
 
 .openPersonalLibrary {
-  width: 10%;
+  width: 20%;
   margin: 0% 5%;
   font-size: 1em;
   display: block;
@@ -61,6 +87,7 @@ footer {
   padding: 20px;
   border: 3px solid rgb(20, 20, 20);
   box-shadow: 5px 5px 5px 5px rgba(20, 20, 20, 0.4);
+  background-color: rgb(221, 221, 221);
 }
 
 .searchTitle {
@@ -69,8 +96,8 @@ footer {
 }
 
 .searchInput {
-  width: 80%;
-  height: calc(1em + 30px);
+  width: 70%;
+  height: calc(1em + 33px);
   outline: none;
   padding-left: 20px;
 }
@@ -79,7 +106,7 @@ footer {
   outline: none;
 }
 .searchSubmit {
-  width: 10%;
+  width: 20%;
   margin: 0% 5%;
   font-size: 1em;
 }
@@ -89,6 +116,7 @@ footer {
   margin: 20px 0px;
   border: 3px solid rgb(20, 20, 20);
   box-shadow: 5px 5px 5px 5px rgba(20, 20, 20, 0.4);
+  background-color: rgb(221, 221, 221);
 }
 
 .cardHeader, .jumbotron {
@@ -109,3 +137,29 @@ footer {
   display: inline-block;
   padding: 10px 20px;
 }
+
+.cardBody {
+  height: 80%;
+}
+
+.cardBottom {
+  height: 20%;
+}
+
+.noMatch {
+  text-align: center;
+  padding: 30px;
+  margin: 10px auto;
+  color: rgb(250,250,250);
+}
+
+.return {
+  float: none;
+  margin: -70px auto 5px;
+  padding: 10px 20px;
+  background-color: rgb(250,250,250);
+  border: 2px outset rgb(250,250,250);
+  color: rgb(40, 40, 40);
+  transition: background-color 0.5s, color 0.5s, border 0.5s;
+}
+

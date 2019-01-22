@@ -7,6 +7,7 @@ import Text from "./p"
 import Button from "./button"
 import Row from "./row"
 import Column from "./column"
+import Container from "./container"
 
 class Card extends Component {
     
@@ -20,14 +21,23 @@ class Card extends Component {
 
                         <Title className="cardTitle" 
                                title={this.props.title} 
-                               id={this.props.id}
                         />
-                        
-                        {this.props.authors.map((author) => (
-                            <SubTitle className="cardAuthor" 
-                                      subTitle={author}  
-                            />
-                        ))}
+
+                        {this.props.authors ?
+                            (
+                                this.props.authors.map((author) => (
+                                <SubTitle className="cardAuthor" 
+                                    subTitle={author}  
+                                />
+                                ))
+                            )
+                            :
+                            (
+                                <SubTitle className="cardAuthor" 
+                                    subTitle={this.props.authors}  
+                                />
+                            )
+                        }
                         
 
                     </Column>
@@ -39,7 +49,6 @@ class Card extends Component {
                         <Image className="cardImg" 
                                image={this.props.image} 
                                alt={this.props.alt} 
-                               id={this.props.id}
                         />
 
                     </Column>
@@ -47,38 +56,45 @@ class Card extends Component {
 
                         <Text className="cardDescription" 
                               text={this.props.story} 
-                              id={this.props.id} 
                         />
                         
                         <Text className="cardCategoryTitle" 
                               text="Categories: " 
-                              id={this.props.id}
                         />
 
-                        {this.props.categories.map((category) => (
+                        {this.props.categories ?
+                        (
+                            this.props.categories.map((category) => (
                             <Text className="cardCategory" 
                                   text={category}  
                             />
-                        ))}
+                            ))
+                        )
+                        :
+                        (
+                            <Text className="cardCategory" 
+                                  text={this.props.categories}  
+                            />
+                        )
+                        }
+
 
                         <Text className="cardPages" 
                               text={`Page Count: ${this.props.pageCount}.`}
-                              id={this.props.id}
                         />
-
-                        <Button className="save" 
-                                id={this.props.id}
-                                function={this.props.savethisbook}
-                                name={["Save ", <i className="far fa-bookmark"></i>]} 
-                        />
-
-                        <Button className="readMore" 
-                                id={this.props.id}
-                                function={this.props.readthisbook}
-                                name={["Open in Google Books  ", <i className="fas fa-book-open"></i>]}
-                        />
-
+                        
                     </Column>
+                </Row>
+                <Row className="cardBotton justify-content-end">
+                    <Button className="save align-self-end" 
+                            function={this.props.savethisbook}
+                            name={["Save ", <i className="far fa-bookmark"></i>]} 
+                    />
+
+                    <Button className="readMore align-self-end" 
+                            function={this.props.readthisbook}
+                            name={["Open in Google Books  ", <i className="fas fa-book-open"></i>]}
+                    />
                 </Row>
             </div>
         )

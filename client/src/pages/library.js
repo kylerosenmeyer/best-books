@@ -34,10 +34,12 @@ class Library extends Component {
 
   refreshLibrary = () => {
     this.setState(this.library)
+    this.search.query = ""
+    this.setState(this.search)
   }
 
   handleInputChange = (event) => {
-
+    this.library.books = []
     let userSearch = event.target.value
     console.log(`userSearch: ${userSearch}`)
 
@@ -52,29 +54,27 @@ class Library extends Component {
 
     API.searchLibrary(this.search)
        .then((response) => {
-
+         console.log(response)
           let books = response.data
+  
           for ( let i=0; i<books.length; i++ ) {
             let foundBook = {
               title: books[i].volumeInfo.title,
               authors: books[i].volumeInfo.authors,
               story: books[i].volumeInfo.description,
               pageCount: books[i].volumeInfo.pageCount,
-              image: books[i].volumeInfo.imageLinks.thumbnail,
+              image: ( books[i].volumeInfo.imageLinks ? books[i].volumeInfo.imageLinks.thumbnail : "http://res.publicdomainfiles.com/pdf_view/84/13939536618078.png" ),
               href: books[i].volumeInfo.infoLink,
-              categories: books[i].volumeInfo.categories,
-              order: i
+              categories: books[i].volumeInfo.categories
             }
             this.library.books.push(foundBook)
           }
-          console.log(this.library)
+          
           this.refreshLibrary()
         })
        .catch((err) => console.log(err))
-  }
-
-  loadPersonalLibrary = () => {
-   console.log("open personal library")
+        
+    
   }
 
   saveThisBook = (title, authors, image, href, story, pagecount, categories) => {
@@ -109,7 +109,7 @@ class Library extends Component {
   }
 
   updateCollection = () => {
-
+    console.log(`updating collection.`)
     API.updateCollection()
        .then((newcount) => {
          this.collection.count = newcount.data
@@ -123,44 +123,49 @@ class Library extends Component {
       <Container className="appWrapper">
 
         <Link to={"/"}>
-          <Jumbotron title="Library App" subTitle="The best library app ever." />
+          <Jumbotron title="Best Books" subTitle="Access every book on the internet." />
         </Link>
         
-        <Row>
+        <Row className="headerRow">
           <Column className="col-12">
             <Container className="personalWrapper">
               <SubTitle className="personalTitle" 
-                        subTitle={`You have ${this.collection.count} book(s) in your personal collection.`}
+                        subTitle={`You have ${this.collection.count} book(s) in your collection.`}
                         update={this.updateCollection}
                          />
               <Link to={"/library/"}>
-                <Button className="openPersonalLibrary" name="Open" function={this.loadPersonalLibrary} />      
+                <Button className="openPersonalLibrary" name="Open" />      
               </Link>
             </Container>
           </Column>
         </Row>
 
-        <Search update={this.handleInputChange} search={this.handleUserSearch}/>
+        <Search value={this.search.query} update={this.handleInputChange} search={this.handleUserSearch}/>
 
         <Row className="cardSection">
-          <Column className="col-12">
-            {this.library.books.map((book)=> (
-              <Card title={book.title} 
-                    authors={book.authors}
-                    image={book.image}
-                    alt={book.title}
-                    href={book.href}
-                    story={book.story}
-                    pageCount={book.pageCount}
-                    categories={book.categories}
-                    key={book.order} 
-                    id={book.order}
-                    update={this.refreshLibrary}
-                    savethisbook={ () => {this.saveThisBook(book.title, book.authors, book.image, book.href, book.story, book.pageCount, book.categories)}}
-                    readthisbook={()=>{this.readBook(book.href)}}
-                    />
-            ))}
-          </Column>
+
+        {this.library.books.length ? 
+          ( 
+            <Column className="col-12">
+              {this.library.books.map((book, key)=> (
+                <Card title={book.title} 
+                      authors={book.authors}
+                      image={book.image}
+                      alt={book.title}
+                      href={book.href}
+                      story={book.story}
+                      pageCount={book.pageCount}
+                      categories={book.categories}
+                      key={key} 
+                      update={this.refreshLibrary}
+                      savethisbook={ () => {this.saveThisBook(book.title, book.authors, book.image, book.href, book.story, book.pageCount, book.categories)}}
+                      readthisbook={()=>{this.readBook(book.href)}}
+                /> 
+              ))}
+            </Column>
+           ) : (
+            <SubTitle className="noMatch" subTitle="Search for a Book or Author." />
+          ) } 
         </Row>
 
         <Footer />

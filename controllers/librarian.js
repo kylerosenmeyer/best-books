@@ -12,7 +12,7 @@ module.exports = {
       .catch(err => console.log(err))
   },
 
-  create: function(book) {
+  create: function(book, cb) {
 
     db.Book
       .findOne({title: book.title})
@@ -21,7 +21,10 @@ module.exports = {
 
           db.Book
             .create(book)
-            .then(book => console.log(book))
+            .then(book => {
+              console.log(book)
+              cb("saved")
+            })
             .catch(err => console.log(err))
         }
       })
@@ -46,17 +49,4 @@ module.exports = {
   }
 }
 
-// update: function(req, res) {
-//   db.Book
-//     .findOneAndUpdate({ _id: req.params.id }, req.body)
-//     .then(dbModel => res.json(dbModel))
-//     .catch(err => res.status(422).json(err))
-// },
-// remove: function(req, res) {
-//   db.Book
-//     .findById({ _id: req.params.id })
-//     .then(dbModel => dbModel.remove())
-//     .then(dbModel => res.json(dbModel))
-//     .catch(err => res.status(422).json(err))
-// }
 
