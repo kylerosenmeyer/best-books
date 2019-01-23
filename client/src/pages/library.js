@@ -11,7 +11,6 @@ import Search from "../components/search"
 import SubTitle from "../components/h3"
 import Button from "../components/button"
 
-// import test from "../test-data.json"
 import API from "../utility/api"
 
 class Library extends Component {
@@ -41,7 +40,7 @@ class Library extends Component {
   handleInputChange = (event) => {
     this.library.books = []
     let userSearch = event.target.value
-    console.log(`userSearch: ${userSearch}`)
+    // console.log(`userSearch: ${userSearch}`)
 
     this.search.query = userSearch
     this.setState(this.search)
@@ -54,7 +53,7 @@ class Library extends Component {
 
     API.searchLibrary(this.search)
        .then((response) => {
-         console.log(response)
+        //  console.log(response)
           let books = response.data
   
           for ( let i=0; i<books.length; i++ ) {
@@ -89,15 +88,15 @@ class Library extends Component {
           categories: categories
         }
 
-    console.log("----------------------------------------------")
-    console.log(`check the book title: ${book.title}`)
-    console.log(`check the book authors: ${book.authors}`)
-    console.log(`check the book image: ${book.image}`)
-    console.log(`check the book link: ${book.link}`)
-    console.log(`check the book story: ${book.story}`)
-    console.log(`check the book pagecount: ${book.pages}`)
-    console.log(`check the book categories: ${book.categories}`)
-    console.log("----------------------------------------------")
+    // console.log("----------------------------------------------")
+    // console.log(`check the book title: ${book.title}`)
+    // console.log(`check the book authors: ${book.authors}`)
+    // console.log(`check the book image: ${book.image}`)
+    // console.log(`check the book link: ${book.link}`)
+    // console.log(`check the book story: ${book.story}`)
+    // console.log(`check the book pagecount: ${book.pages}`)
+    // console.log(`check the book categories: ${book.categories}`)
+    // console.log("----------------------------------------------")
     
     API.saveBook(book)
        .then(() => this.updateCollection() )
@@ -109,7 +108,7 @@ class Library extends Component {
   }
 
   updateCollection = () => {
-    console.log(`updating collection.`)
+    // console.log(`updating collection.`)
     API.updateCollection()
        .then((newcount) => {
          this.collection.count = newcount.data

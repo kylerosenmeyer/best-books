@@ -12,8 +12,8 @@ class App extends Component {
       <Router>
         <div>
           <Switch>
-            <Route exact path="/" component={Library} />
             <Route exact path="/library" component={PersonalLibrary} />
+            <Route path="/*" component={Library} />
           </Switch>
         </div>
       </Router>

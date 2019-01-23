@@ -27,16 +27,16 @@ class Book extends Component {
 
         let books = res.data
         
-        console.log("----------------------------------------------")
-        console.log(`check the first book:`)
-        console.log(`check the book title: ${books[0].title}`)
-        console.log(`check the book authors: ${books[0].authors}`)
-        console.log(`check the book image: ${books[0].image}`)
-        console.log(`check the book link: ${books[0].link}`)
-        console.log(`check the book story: ${books[0].story}`)
-        console.log(`check the book pagecount: ${books[0].pages}`)
-        console.log(`check the book categories: ${books[0].categories}`)
-        console.log("----------------------------------------------")
+        // console.log("----------------------------------------------")
+        // console.log(`check the first book:`)
+        // console.log(`check the book title: ${books[0].title}`)
+        // console.log(`check the book authors: ${books[0].authors}`)
+        // console.log(`check the book image: ${books[0].image}`)
+        // console.log(`check the book link: ${books[0].link}`)
+        // console.log(`check the book story: ${books[0].story}`)
+        // console.log(`check the book pagecount: ${books[0].pages}`)
+        // console.log(`check the book categories: ${books[0].categories}`)
+        // console.log("----------------------------------------------")
 
         this.collection.books = books
         this.setState(this.collection)
@@ -50,10 +50,10 @@ class Book extends Component {
   }
 
   removeBook = (id) => {
-    console.log(`check id: ${id}`)
+    // console.log(`check id: ${id}`)
     API.removeBook(id)
        .then((response) => {
-         console.log(response.data)
+        //  console.log(response.data)
          this.loadBooks()
        })
        .catch(err => console.log(err))

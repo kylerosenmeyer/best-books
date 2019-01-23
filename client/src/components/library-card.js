@@ -9,6 +9,8 @@ import Row from "./row"
 import Column from "./column"
 
 class LibraryCard extends Component {
+
+    remove = ["remove", <i className="fa fa-trash"> </i>]
     
     render(){
         
@@ -22,9 +24,10 @@ class LibraryCard extends Component {
                                title={this.props.title} 
                         />
                         
-                        {this.props.authors.map((author) => (
+                        {this.props.authors.map((author, key) => (
                             <SubTitle className="cardAuthor" 
-                                      subTitle={author}  
+                                      subTitle={author} 
+                                      key={key} 
                             />
                         ))}
                         
@@ -51,9 +54,10 @@ class LibraryCard extends Component {
                               text="Categories: " 
                         />
                         
-                        {this.props.categories.map((category) => (
+                        {this.props.categories.map((category, key) => (
                             <Text className="cardCategory" 
                                   text={category}  
+                                  key={key}
                             />
                         ))}
 
@@ -66,12 +70,12 @@ class LibraryCard extends Component {
                 <Row className="cardBotton justify-content-end">
                     <Button className="remove align-self-end" 
                             function={this.props.removethisbook}
-                            name={["Remove ", <i className="fa fa-trash"></i>]} 
+                            name={<i className="fa fa-trash"> </i>} 
                     />
 
                     <Button className="readMore align-self-end" 
                             function={this.props.readthisbook}
-                            name={["Open in Google Books  ", <i className="fas fa-book-open"></i>]}
+                            name={<i className="fas fa-book-open"></i>}
                     />
                 </Row>
             </div>

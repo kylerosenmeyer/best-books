@@ -22,7 +22,7 @@ module.exports = {
           db.Book
             .create(book)
             .then(book => {
-              console.log(book)
+              // console.log(book)
               cb("saved")
             })
             .catch(err => console.log(err))
@@ -35,7 +35,7 @@ module.exports = {
     db.Book 
       .countDocuments({})
       .then(number => {
-        console.log(`Collection length: ${number}.`)
+        // console.log(`Collection length: ${number}.`)
         cb(number)
       })
   },
