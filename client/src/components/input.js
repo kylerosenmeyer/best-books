@@ -3,7 +3,7 @@ import React from "react"
 function Input(props) {
 
     return (
-        <input className="searchInput" onChange={props.update} value={props.value} />
+        <input className={`searchInput ${props.className}`} onChange={props.update} value={props.value} />
     )
     
 }

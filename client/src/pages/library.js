@@ -169,8 +169,6 @@ class Library extends Component {
 
         <Footer />
       </Container>
-
-      
     )
   }
 }
